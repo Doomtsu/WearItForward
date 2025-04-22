@@ -366,6 +366,291 @@
         transform: scale(1.05);
         filter: brightness(1.1);
       }
+
+      /* Enhanced Hero Animations */
+      .hero-interactive {
+        position: relative;
+        cursor: pointer;
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+        perspective: 1000px;
+        animation: gentle-float 3s ease-in-out infinite;
+      }
+
+      .hero-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.6s ease;
+      }
+
+      .hero-interactive:hover .hero-container {
+        transform: rotateY(180deg);
+      }
+
+      .hero-front, .hero-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+
+      .hero-front {
+        background: var(--beige);
+      }
+
+      .hero-back {
+        background: var(--primary);
+        transform: rotateY(180deg);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        color: white;
+        text-align: center;
+      }
+
+      .hero-stats {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .hero-message {
+        font-size: 0.9rem;
+        line-height: 1.2;
+      }
+
+      .floating-hearts {
+        position: absolute;
+        pointer-events: none;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .hero-interactive:hover .floating-hearts {
+        animation: float-up 1.5s ease-out forwards;
+      }
+
+      @keyframes float-up {
+        0% {
+          opacity: 0;
+          transform: translateY(0);
+        }
+        20% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-100px) rotate(45deg);
+        }
+      }
+
+      .hero-pulse {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: var(--beige);
+        opacity: 0.5;
+        z-index: -1;
+      }
+
+      .hero-interactive:hover .hero-pulse {
+        animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+      }
+
+      @keyframes pulse-ring {
+        0% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+        100% {
+          transform: scale(1.5);
+          opacity: 0;
+        }
+      }
+
+      .hero-gift-icon {
+        animation: subtle-pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes subtle-pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+
+      .impact-counter {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: white;
+        margin-top: 10px;
+      }
+
+      .hero-text-animated {
+        position: relative;
+        display: inline-block;
+        font-size: 1.8rem;
+        font-weight: 500;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: text-reveal 0.8s ease forwards 0.5s;
+      }
+
+      @keyframes text-reveal {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Enhanced Continuous Animations */
+      .hero-interactive {
+        position: relative;
+        cursor: pointer;
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+        perspective: 1000px;
+        animation: gentle-float 3s ease-in-out infinite;
+      }
+
+      @keyframes gentle-float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
+      .ambient-sparkle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: var(--secondary);
+        border-radius: 50%;
+        opacity: 0;
+      }
+
+      .ambient-sparkle:nth-child(1) {
+        top: 20%;
+        left: 0;
+        animation: ambient-twinkle 3s ease-in-out infinite;
+      }
+
+      .ambient-sparkle:nth-child(2) {
+        top: 60%;
+        right: 10%;
+        animation: ambient-twinkle 3s ease-in-out infinite 0.5s;
+      }
+
+      .ambient-sparkle:nth-child(3) {
+        bottom: 20%;
+        left: 10%;
+        animation: ambient-twinkle 3s ease-in-out infinite 1s;
+      }
+
+      .ambient-sparkle:nth-child(4) {
+        top: 40%;
+        right: 0;
+        animation: ambient-twinkle 3s ease-in-out infinite 1.5s;
+      }
+
+      @keyframes ambient-twinkle {
+        0%, 100% { 
+          opacity: 0;
+          transform: scale(0.5) rotate(0deg);
+        }
+        50% { 
+          opacity: 1;
+          transform: scale(1.2) rotate(180deg);
+        }
+      }
+
+      .hero-circle {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 2px solid var(--primary);
+        opacity: 0.3;
+        animation: rotate-circle 12s linear infinite;
+      }
+
+      @keyframes rotate-circle {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      .hero-gift-icon {
+        animation: subtle-pulse 2s ease-in-out infinite;
+      }
+
+      .continuous-particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .particle {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: var(--beige);
+        border-radius: 50%;
+        opacity: 0;
+      }
+
+      .particle:nth-child(1) {
+        left: 50%;
+        animation: particle-float 4s ease-in-out infinite;
+      }
+
+      .particle:nth-child(2) {
+        left: 30%;
+        animation: particle-float 4s ease-in-out infinite 1s;
+      }
+
+      .particle:nth-child(3) {
+        left: 70%;
+        animation: particle-float 4s ease-in-out infinite 2s;
+      }
+
+      @keyframes particle-float {
+        0% {
+          opacity: 0;
+          transform: translateY(0) scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: translateY(-20px) scale(1.2);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-40px) scale(1);
+        }
+      }
+
+      .gradient-ring {
+        position: absolute;
+        width: 110%;
+        height: 110%;
+        border-radius: 50%;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        opacity: 0.1;
+        animation: spin-ring 8s linear infinite;
+      }
+
+      @keyframes spin-ring {
+        from { transform: translate(-5%, -5%) rotate(0deg); }
+        to { transform: translate(-5%, -5%) rotate(360deg); }
+      }
     </style>
   </head>
   <body class="font-sans antialiased">
@@ -502,23 +787,42 @@
                 >
                   <!-- Insert hero image here -->
                   <div class="text-center p-8">
-                    <div class="hero-icon-container">
+                    <div class="hero-interactive">
+                      <div class="gradient-ring"></div>
                       <div class="hero-circle"></div>
-                      <div class="sparkle-hero"></div>
-                      <div class="sparkle-hero"></div>
-                      <div class="sparkle-hero"></div>
-                      <div class="sparkle-hero"></div>
-                      <div class="hero-gift">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M20 12V22H4V12"/>
-                          <path d="M22 7H2V12H22V7Z"/>
-                          <path d="M12 22V7"/>
-                          <path d="M12 7H7.5C6.83696 7 6.20107 6.73661 5.73223 6.26777C5.26339 5.79893 5 5.16304 5 4.5C5 3.83696 5.26339 3.20107 5.73223 2.73223C6.20107 2.26339 6.83696 2 7.5 2C11 2 12 7 12 7Z"/>
-                          <path d="M12 7H16.5C17.163 7 17.7989 6.73661 18.2678 6.26777C18.7366 5.79893 19 5.16304 19 4.5C19 3.83696 18.7366 3.20107 18.2678 2.73223C17.7989 2.26339 17.163 2 16.5 2C13 2 12 7 12 7Z"/>
-                        </svg>
+                      <div class="continuous-particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                      </div>
+                      <div class="ambient-sparkle"></div>
+                      <div class="ambient-sparkle"></div>
+                      <div class="ambient-sparkle"></div>
+                      <div class="ambient-sparkle"></div>
+                      <div class="hero-pulse"></div>
+                      <div class="hero-container">
+                        <div class="hero-front">
+                          <div class="hero-gift-icon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                              <path d="M20 12V22H4V12"/>
+                              <path d="M22 7H2V12H22V7Z"/>
+                              <path d="M12 22V7"/>
+                              <path d="M12 7H7.5C6.83696 7 6.20107 6.73661 5.73223 6.26777C5.26339 5.79893 5 5.16304 5 4.5C5 3.83696 5.26339 3.20107 5.73223 2.73223C6.20107 2.26339 6.83696 2 7.5 2C11 2 12 7 12 7Z"/>
+                              <path d="M12 7H16.5C17.163 7 17.7989 6.73661 18.2678 6.26777C18.7366 5.79893 19 5.16304 19 4.5C19 3.83696 18.7366 3.20107 18.2678 2.73223C17.7989 2.26339 17.163 2 16.5 2C13 2 12 7 12 7Z"/>
+                            </svg>
+                          </div>
+                          <div class="floating-hearts" style="left: 20%;">❤️</div>
+                          <div class="floating-hearts" style="left: 50%;">👕</div>
+                          <div class="floating-hearts" style="left: 80%;">❤️</div>
+                        </div>
+                        <div class="hero-back">
+                          <div class="hero-stats">2,600+</div>
+                          <div class="hero-message">Items Donated</div>
+                          <div class="impact-counter">Making a Difference</div>
+                        </div>
                       </div>
                     </div>
-                    <h3 class="hero-text">wear it forward.</h3>
+                    <h3 class="hero-text-animated mt-6">wear it forward.</h3>
                   </div>
                 </div>
               </div>
